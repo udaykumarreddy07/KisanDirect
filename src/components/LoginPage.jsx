@@ -131,6 +131,30 @@ export default function LoginPage() {
         {/* Right / Center Auth Card */}
         <div className="login-card-pane">
           <div className="login-card">
+            {/* Quick 1-Click Instant Enter Button */}
+            <div style={{ marginBottom: "16px" }}>
+              <button
+                type="button"
+                onClick={() => login("farmer_ramesh")}
+                className="btn-primary"
+                style={{
+                  width: "100%",
+                  padding: "13px",
+                  fontSize: "0.95rem",
+                  fontWeight: 800,
+                  background: "linear-gradient(135deg, #16a34a 0%, #15803d 100%)",
+                  boxShadow: "0 4px 14px rgba(22, 163, 74, 0.35)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px"
+                }}
+              >
+                <span>🌾 1-Click Demo: Explore as Farmer Ramesh</span>
+                <ArrowRight size={16} />
+              </button>
+            </div>
+
             {/* Tabs: Sign In vs Register */}
             <div className="login-tabs">
               <button

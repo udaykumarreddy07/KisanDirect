@@ -109,15 +109,24 @@ export default function WebNavbar() {
               <span>Direct Marketplace</span>
             </button>
 
-            {currentUser.role === "farmer" && (
-              <button
-                onClick={() => setActiveTab("sell")}
-                className={`web-nav-link ${activeTab === "sell" ? "active" : ""}`}
-              >
-                <PlusCircle size={18} />
-                <span>Sell Harvest</span>
-              </button>
-            )}
+            <button
+              onClick={() => {
+                if (currentUser.role !== "farmer") {
+                  switchUser("farmer_ramesh");
+                }
+                setActiveTab("sell");
+              }}
+              className={`web-nav-link ${activeTab === "sell" ? "active" : ""}`}
+              style={{
+                background: activeTab === "sell" ? "#16a34a" : "#f0fdf4",
+                color: activeTab === "sell" ? "#ffffff" : "#15803d",
+                fontWeight: 700,
+                border: "1px solid #bbf7d0"
+              }}
+            >
+              <PlusCircle size={18} />
+              <span>+ Sell Farm Products</span>
+            </button>
 
             <button
               onClick={() => setActiveTab("negotiations")}

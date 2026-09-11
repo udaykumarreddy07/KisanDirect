@@ -1467,3 +1467,29 @@ body {
   font-weight: 700;
 }
 
+/* Enhancements for Zero-Middleman Direct Marketplace */
+@media (min-width: 992px) {
+  .desktop-stat-badge {
+    display: block !important;
+  }
+}
+
+.hero-direct-banner {
+  background-size: cover;
+  transition: transform var(--transition-normal);
+}
+
+.chip-btn:hover {
+  transform: translateY(-1px);
+}
+
+.crop-card {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.crop-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+

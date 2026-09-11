@@ -26,7 +26,8 @@ export default function ProductDetailModal() {
     currentUser,
     updateProduceListing,
     deleteListing,
-    setSelectedCropForOffer
+    setSelectedCropForOffer,
+    directInstantBuy
   } = useApp();
 
   const crop = selectedCropForDetails;
@@ -337,10 +338,54 @@ export default function ProductDetailModal() {
               </a>
             </div>
 
+            {/* Direct Zero-Middleman Transparency Box */}
+            <div
+              style={{
+                background: "#f8fafc",
+                border: "1px dashed #94a3b8",
+                borderRadius: "12px",
+                padding: "12px 14px",
+                marginBottom: "16px",
+                fontSize: "0.78rem",
+                color: "#475569",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "10px",
+                flexWrap: "wrap"
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <span style={{ fontSize: "1.2rem" }}>🛡️</span>
+                <div>
+                  <strong style={{ color: "#0f172a", display: "block" }}>Direct Trade Guarantee: No Broker Commissions</strong>
+                  <span>Direct farmer UPI escrow protection. Inspect quality before releasing funds.</span>
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: "8px" }}>
+                <a
+                  href={`tel:${crop.farmerPhone || "+919823456789"}`}
+                  className="btn-outline"
+                  style={{ fontSize: "0.72rem", padding: "6px 10px", textDecoration: "none", color: "#15803d", borderColor: "#86efac", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  <Phone size={12} /> Call Farmer
+                </a>
+                <a
+                  href={`https://wa.me/919823456789?text=${encodeURIComponent(`Hello ${crop.farmerName}, I am interested in buying ${crop.cropName} directly via KisanDirect.`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-outline"
+                  style={{ fontSize: "0.72rem", padding: "6px 10px", textDecoration: "none", color: "#16a34a", borderColor: "#86efac", display: "inline-flex", alignItems: "center", gap: "4px" }}
+                >
+                  💬 WhatsApp
+                </a>
+              </div>
+            </div>
+
             {/* Action Buttons */}
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               {isOwner ? (
-                <>
+                <div style={{ display: "flex", gap: "12px" }}>
                   <button
                     onClick={() => setIsEditing(true)}
                     className="btn-primary"
@@ -355,15 +400,53 @@ export default function ProductDetailModal() {
                   >
                     <Trash2 size={16} /> Remove
                   </button>
-                </>
+                </div>
               ) : (
-                <button
-                  onClick={handleStartOffer}
-                  className="btn-primary"
-                  style={{ width: "100%", padding: "14px", fontSize: "0.95rem" }}
-                >
-                  <MessageSquareShare size={18} /> Send Direct Offer / Negotiate Price
-                </button>
+                <>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        directInstantBuy(crop, crop.minOrderQuantity || 10);
+                        setSelectedCropForDetails(null);
+                      }}
+                      className="btn-primary"
+                      style={{
+                        padding: "12px",
+                        fontSize: "0.88rem",
+                        fontWeight: 800,
+                        background: "linear-gradient(135deg, #16a34a 0%, #15803d 100%)",
+                        boxShadow: "0 4px 12px rgba(22, 163, 74, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "6px"
+                      }}
+                    >
+                      ⚡ Buy Now (₹{crop.expectedPrice}/{crop.unit})
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleStartOffer}
+                      className="btn-outline"
+                      style={{
+                        padding: "12px",
+                        fontSize: "0.88rem",
+                        fontWeight: 700,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "6px"
+                      }}
+                    >
+                      <MessageSquareShare size={16} /> Send Direct Offer
+                    </button>
+                  </div>
+                  <div style={{ fontSize: "0.72rem", color: "#64748b", textAlign: "center" }}>
+                    Min order: {crop.minOrderQuantity} {crop.unit} • Zero middleman fee applied
+                  </div>
+                </>
               )}
             </div>
           </div>

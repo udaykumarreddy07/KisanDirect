@@ -464,6 +464,60 @@ export function AppProvider({ children }) {
     setActiveTab("orders");
   };
 
+  // Instant direct purchase at farmer's listed price without any mediator
+  const directInstantBuy = (crop, orderQty = null, deliveryType = "delivery", deliveryAddress = "") => {
+    const qty = Number(orderQty) || Number(crop.minOrderQuantity) || 10;
+    const agreedPrice = Number(crop.expectedPrice);
+    const totalAmount = agreedPrice * qty;
+    const middlemanSavedAmount = Math.round(totalAmount * 0.32);
+    const orderId = `ORD-${Math.floor(10000 + Math.random() * 90000)}`;
+
+    const newOrder = {
+      id: orderId,
+      cropId: crop.id,
+      cropName: crop.cropName,
+      farmerId: crop.farmerId,
+      farmerName: crop.farmerName,
+      farmerPhone: "+91 98234 56789",
+      buyerId: currentUser.id,
+      buyerName: currentUser.name,
+      buyerPhone: currentUser.phone || "+91 91234 56780",
+      quantity: qty,
+      unit: crop.unit || "kg",
+      pricePerKg: agreedPrice,
+      totalAmount,
+      middlemanSavedAmount,
+      deliveryType,
+      deliveryAddress: deliveryAddress || `${currentUser.location || "Direct Customer Address"}`,
+      pickupOtp: generateOTP(),
+      paymentStatus: "unpaid",
+      paymentRef: null,
+      orderStatus: "confirmed",
+      createdAt: new Date().toISOString(),
+      ratings: {
+        farmerRated: null,
+        buyerRated: null,
+        feedback: null
+      }
+    };
+
+    setOrders((prev) => [newOrder, ...prev]);
+
+    addNotification({
+      targetUserId: crop.farmerId,
+      title: `⚡ Direct Order: ${crop.cropName}!`,
+      message: `${currentUser.name} purchased ${qty} ${crop.unit} at your direct listed price of ₹${agreedPrice}/${crop.unit} with 0% broker fee!`,
+      type: "order",
+      linkAction: "orders"
+    });
+
+    confetti({ particleCount: 75, spread: 85, origin: { y: 0.6 } });
+    showToast(`Direct order created at ₹${agreedPrice}/${crop.unit}! Zero middleman fee.`);
+    setActiveTab("orders");
+    setSelectedOrderForPayment(newOrder);
+    return newOrder;
+  };
+
   // ============================================
   // STEP 7: PAYMENT SYSTEM (SIMULATED ESCROW & UPI)
   // ============================================
@@ -650,6 +704,7 @@ export function AppProvider({ children }) {
         counterOffer,
         rejectOffer,
         acceptOfferAndCreateOrder,
+        directInstantBuy,
         orders,
         processSimulatedPayment,
         markProduceReady,
