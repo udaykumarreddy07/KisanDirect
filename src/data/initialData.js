@@ -977,7 +977,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 8,
     location: "Yeola, Nashik",
     coordinates: { lat: 20.0423, lng: 74.4878 },
-    image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=600&auto=format&fit=crop&q=80",
+    image: "/images/brinjal_eggplant.jpg",
     description: "Deep glossy purple oval brinjals with green calyx. Tender, virtually seedless flesh that cooks buttery soft in curries.",
     status: "active",
     createdAt: "2026-09-09T08:30:00.000Z"
@@ -1101,7 +1101,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 365,
     location: "Shimla Orchard (Dispatch: Ludhiana)",
     coordinates: { lat: 31.1048, lng: 77.1734 },
-    image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600&auto=format&fit=crop&q=80",
     description: "Light amber kernel walnuts easily cracked by hand pressure. High omega-3 oil yield with sweet nutty crunch, naturally shade-dried.",
     status: "active",
     createdAt: "2026-09-04T15:00:00.000Z"
@@ -1129,7 +1129,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 240,
     location: "Kurnool-Guntur Road, AP",
     coordinates: { lat: 15.8281, lng: 78.0373 },
-    image: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=600&auto=format&fit=crop&q=80",
     description: "Red-skinned bold peanut kernels sorted over gravity separators. Moisture strictly controlled below 7% to prevent aflatoxin development.",
     status: "active",
     createdAt: "2026-09-03T08:30:00.000Z"
@@ -1177,7 +1177,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 180,
     location: "Anakapalli Sugarcane Belt, AP",
     coordinates: { lat: 17.6897, lng: 83.0039 },
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=600&auto=format&fit=crop&q=80",
     description: "Traditional golden brown jaggery blocks prepared without chemical bleaching hydrosulfite. Rich in unrefined cane minerals and iron.",
     status: "active",
     createdAt: "2026-09-05T13:00:00.000Z"
@@ -1349,7 +1349,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 180,
     location: "Kannur-Wayanad Border",
     coordinates: { lat: 11.8745, lng: 75.3704 },
-    image: "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=600&auto=format&fit=crop&q=80",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Cashew_apples.jpg/800px-Cashew_apples.jpg",
     description: "Sun-dried in-shell raw cashew nuts with 28% outturn recovery. High kernel weight, ideal for commercial steam boiling and deshelling units.",
     status: "active",
     createdAt: "2026-09-04T14:00:00.000Z"
@@ -1377,7 +1377,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 365,
     location: "Sojat City, Pali-Jodhpur Belt",
     coordinates: { lat: 25.9926, lng: 73.6669 },
-    image: "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80",
     description: "Pure green shade-dried henna leaves from Sojat's GI-recognized micro-climate. Exceptional natural lawsone content for rich reddish-brown body art dye.",
     status: "active",
     createdAt: "2026-09-02T09:00:00.000Z"
@@ -1401,7 +1401,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 15,
     location: "Nokha Sand Dune Belt, Bikaner",
     coordinates: { lat: 27.5997, lng: 73.4215 },
-    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&auto=format&fit=crop&q=80",
+    image: "/images/watermelons.jpg",
     description: "Extremely sweet watermelons ripened under intense desert sunshine (12+ Brix). Thick outer rind allowing long road transit without rupture.",
     status: "active",
     createdAt: "2026-09-08T06:00:00.000Z"
@@ -1797,7 +1797,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 8,
     location: "Bapatla Coastal Farms, Guntur",
     coordinates: { lat: 15.9042, lng: 80.4674 },
-    image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=600&auto=format&fit=crop&q=80",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Luffa_acutangula_Chinese_okra.jpg/800px-Luffa_acutangula_Chinese_okra.jpg",
     description: "Tender, slender ridge gourds harvested daily from trellis netting. Crisp fibrous ridges with succulent soft inner core, harvested early morning for maximum crispness.",
     status: "active",
     createdAt: "2026-09-10T07:30:00.000Z"
@@ -3072,7 +3072,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 365,
     location: "Pimpalgaon Dairy Farm, Nashik",
     coordinates: { lat: 20.1706, lng: 73.9854 },
-    image: "https://images.unsplash.com/photo-1631451095765-2c91616fc9e6?w=600&auto=format&fit=crop&q=80",
+    image: "/images/a2_ghee.jpg",
     description: "Authentic golden Bilona ghee prepared from free-grazing indigenous Gir cows milk. Curd is slow-churned with bi-directional wooden bilona and simmered over cow-dung clay chulhas. Rich nutty aroma and grainy texture.",
     status: "active",
     createdAt: "2026-09-10T08:00:00.000Z"
@@ -3216,7 +3216,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 3650,
     location: "Ludhiana Farm Workshop, Punjab",
     coordinates: { lat: 30.9010, lng: 75.8573 },
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop&q=80",
+    image: "/images/solar_crop_dryer.jpg",
     description: "Custom solar greenhouse convection dryer designed by farmers for drying chillies, herbs, grains, and ginger. Built-in 12V solar exhaust fan maintains 45-55°C, drying crops 3x faster with zero soot or bird damage.",
     status: "active",
     createdAt: "2026-09-04T10:00:00.000Z"
@@ -3248,7 +3248,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 3650,
     location: "Samrala Tehsil, Ludhiana, Punjab",
     coordinates: { lat: 30.8354, lng: 76.1913 },
-    image: "https://images.unsplash.com/photo-1592878904946-86d4e8c3b7a8?w=600&auto=format&fit=crop&q=80",
+    image: "/images/mahindra_tractor.jpg",
     description: "Original single-owner 45HP Mahindra Sarpanch tractor. 8 Forward + 2 Reverse gears, oil immersed disc brakes, dual clutch, newly installed 13.6-28 BKT rear tyres (90% tread). Clean engine with zero oil leaks, inspected with full service history. Direct farm gate sale without dealer markup.",
     status: "active",
     createdAt: "2026-09-10T12:00:00.000Z"
@@ -3277,7 +3277,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 3650,
     location: "Pimpalgaon Baswant, Nashik Rural",
     coordinates: { lat: 20.1706, lng: 73.9854 },
-    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80",
+    image: "/images/swaraj_tractor.jpg",
     description: "Well maintained Swaraj 744 FE 48 HP 3-cylinder water-cooled engine with smooth power steering and multi-speed reverse PTO. Used primarily for light orchard spraying and rotavator operations. Complete battery, alternator, and filter replacement done recently.",
     status: "active",
     createdAt: "2026-09-09T14:30:00.000Z"
@@ -3306,7 +3306,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 3650,
     location: "Merta City, Nagaur, Rajasthan",
     coordinates: { lat: 26.6508, lng: 74.0322 },
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop&q=80",
+    image: "/images/rotavator.jpg",
     description: "Genuine Shaktiman Semi Champion 6-ft rotary tiller with multi-speed oil bath gearbox. Fitted with 42 brand new heat-treated Boron steel L-type blades. Heavy duty PTO shaft with shear bolt safety included. Ideal for seedbed preparation in hard soils.",
     status: "active",
     createdAt: "2026-09-08T16:00:00.000Z"
@@ -3335,7 +3335,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 3650,
     location: "Khanna Agro Hub, Ludhiana",
     coordinates: { lat: 30.7071, lng: 76.2166 },
-    image: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&auto=format&fit=crop&q=80",
+    image: "/images/tractor_trolley.jpg",
     description: "12x6 ft hydraulic tipping trailer with twin heavy industrial hydraulic jacks. Fabricated with 10mm high-tensile steel under-chassis, heavy 9.00-20 Apollo tyres, and quick-release tail drop gate. Perfect for hauling sugarcane, wheat bags, and manure.",
     status: "active",
     createdAt: "2026-09-07T11:00:00.000Z"
@@ -3364,7 +3364,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 1825,
     location: "Niphad Depot, Nashik",
     coordinates: { lat: 20.0838, lng: 74.1105 },
-    image: "https://images.unsplash.com/photo-1578844251758-2f71da64c96f?w=600&auto=format&fit=crop&q=80",
+    image: "/images/tractor_tyres.jpg",
     description: "Pair of 13.6-28 12PR heavy nylon lugged rear farm tyres manufactured by BKT. Taken off a display tractor, virtually unused with full 85%+ tread depth. Deep dual-angle lugs for maximum traction in muddy paddy and clay fields.",
     status: "active",
     createdAt: "2026-09-08T09:30:00.000Z"
@@ -3393,7 +3393,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 1095,
     location: "Guntur Rural Power Spares, AP",
     coordinates: { lat: 16.3067, lng: 80.4365 },
-    image: "https://images.unsplash.com/photo-1597733336794-12d05021d510?w=600&auto=format&fit=crop&q=80",
+    image: "/images/tractor_battery.jpg",
     description: "Heavy-duty vibration resistant battery built specifically for tractors and harvesters. High cold cranking amps (CCA 680), zero sulfation, acid levels full. Tested at authorized center with 100% state of health.",
     status: "active",
     createdAt: "2026-09-09T17:00:00.000Z"
@@ -3422,7 +3422,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 3650,
     location: "Nagaur Desert Well Belt, Rajasthan",
     coordinates: { lat: 27.1983, lng: 73.7493 },
-    image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=600&auto=format&fit=crop&q=80",
+    image: "/images/borewell_pump.jpg",
     description: "High head 7.5 HP submersible pump suitable for 450-650 feet borewells. 100% electrolytic grade pure copper winding motor with stainless steel 304 discharge jacket. Includes 60 meters of 4 sq.mm flat submersible cable and control panel with digital voltmeter.",
     status: "active",
     createdAt: "2026-09-06T15:00:00.000Z"
@@ -3451,7 +3451,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 3650,
     location: "Sulthan Bathery, Wayanad, Kerala",
     coordinates: { lat: 11.6629, lng: 76.2570 },
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop&q=80",
+    image: "/images/power_weeder.jpg",
     description: "Compact 5.5 HP power cultivator for inter-row weeding in vegetables, coffee plantations, sugarcane, and banana orchards. Fuel efficient 4-stroke Honda engine, easy recoil start, includes set of 24 inter-cultivation rotary tines and ditcher attachment.",
     status: "active",
     createdAt: "2026-09-08T13:00:00.000Z"
@@ -3480,7 +3480,7 @@ export const INITIAL_LISTINGS = [
     shelfLifeDays: 3650,
     location: "Pimpalgaon Dairy Farm, Nashik",
     coordinates: { lat: 20.1706, lng: 73.9854 },
-    image: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?w=600&auto=format&fit=crop&q=80",
+    image: "/images/gir_cow.jpg",
     description: "Pedigree certified Gir cow with 3-month-old female heifer calf. Calm gentle temperament, excellent A2 bilona fat content (4.8% fat). Full deworming and FMD vaccination schedule completed. Direct farmer-to-farmer handover with zero broker harassment.",
     status: "active",
     createdAt: "2026-09-09T08:00:00.000Z"

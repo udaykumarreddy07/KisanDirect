@@ -47,7 +47,7 @@ export default function FarmerListingForm() {
     harvestDate: new Date().toISOString().split("T")[0],
     shelfLifeDays: "3650",
     location: currentUser.location || "Nashik Rural, Maharashtra",
-    image: "https://images.unsplash.com/photo-1592878904946-86d4e8c3b7a8?w=600&auto=format&fit=crop&q=80",
+    image: "/images/mahindra_tractor.jpg",
     description: "",
     deliveryOption: "farm_pickup",
     allowCalls: true,
@@ -76,7 +76,7 @@ export default function FarmerListingForm() {
       quantity: 1,
       minOrder: 1,
       shelfLife: 3650,
-      image: "https://images.unsplash.com/photo-1592878904946-86d4e8c3b7a8?w=600&auto=format&fit=crop&q=80",
+      image: "/images/mahindra_tractor.jpg",
       description: "45HP Mahindra Sarpanch tractor in pristine working condition. Dual clutch, oil immersed brakes, new BKT 13.6-28 rear tyres. 100% genuine single owner farm tractor."
     },
     {
@@ -95,7 +95,7 @@ export default function FarmerListingForm() {
       quantity: 1,
       minOrder: 1,
       shelfLife: 3650,
-      image: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80",
+      image: "/images/swaraj_tractor.jpg",
       description: "48 HP Swaraj tractor with smooth power steering, multi-speed reverse PTO, and dry disc brakes. Complete battery and oil service completed last week."
     },
     {
@@ -114,7 +114,7 @@ export default function FarmerListingForm() {
       quantity: 1,
       minOrder: 1,
       shelfLife: 3650,
-      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop&q=80",
+      image: "/images/rotavator.jpg",
       description: "Original Shaktiman 6-ft rotary tiller with multi-speed oil bath gearbox. 42 brand new Boron steel L-type blades. Heavy duty PTO shaft included."
     },
     {
@@ -133,7 +133,7 @@ export default function FarmerListingForm() {
       quantity: 1,
       minOrder: 1,
       shelfLife: 3650,
-      image: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&auto=format&fit=crop&q=80",
+      image: "/images/tractor_trolley.jpg",
       description: "12x6 ft hydraulic tipping trailer with twin heavy industrial hydraulic cylinders, heavy 9.00-20 Apollo tyres, and quick-release tail drop gate."
     },
     {
@@ -152,7 +152,7 @@ export default function FarmerListingForm() {
       quantity: 2,
       minOrder: 2,
       shelfLife: 1825,
-      image: "https://images.unsplash.com/photo-1578844251758-2f71da64c96f?w=600&auto=format&fit=crop&q=80",
+      image: "/images/tractor_tyres.jpg",
       description: "Pair of 13.6-28 12PR heavy nylon lugged rear tractor tyres. 85%+ tread remaining, deep lugs for high traction in mud and clay."
     },
     {
@@ -171,7 +171,7 @@ export default function FarmerListingForm() {
       quantity: 1,
       minOrder: 1,
       shelfLife: 1095,
-      image: "https://images.unsplash.com/photo-1597733336794-12d05021d510?w=600&auto=format&fit=crop&q=80",
+      image: "/images/tractor_battery.jpg",
       description: "Heavy-duty vibration resistant battery built specifically for tractors and harvesters. High cold cranking amps (CCA 680), full acid levels."
     },
     {
@@ -190,7 +190,7 @@ export default function FarmerListingForm() {
       quantity: 1,
       minOrder: 1,
       shelfLife: 3650,
-      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=600&auto=format&fit=crop&q=80",
+      image: "/images/borewell_pump.jpg",
       description: "High head 7.5 HP pump suitable for 450-650 ft borewells. 100% pure copper winding motor with stainless steel 304 jacket. Includes 60m cable."
     },
     {
@@ -209,7 +209,7 @@ export default function FarmerListingForm() {
       quantity: 1,
       minOrder: 1,
       shelfLife: 3650,
-      image: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?w=600&auto=format&fit=crop&q=80",
+      image: "/images/gir_cow.jpg",
       description: "Pedigree certified Gir cow with 3-month-old female heifer calf. Calm temperament, high A2 fat content. Complete deworming and vaccination done."
     },
     // Traditional Produce & Agro Products
@@ -229,7 +229,7 @@ export default function FarmerListingForm() {
       quantity: 150,
       minOrder: 2,
       shelfLife: 365,
-      image: "https://images.unsplash.com/photo-1631451095765-2c91616fc9e6?w=600&auto=format&fit=crop&q=80",
+      image: "/images/a2_ghee.jpg",
       description: "Golden Bilona ghee prepared from free-grazing indigenous Gir cows milk. Churned with bi-directional wooden bilona, rich nutty aroma."
     },
     {
@@ -255,16 +255,16 @@ export default function FarmerListingForm() {
 
   // Photo Presets
   const PHOTO_PRESETS = [
-    { name: "Mahindra Tractor", url: "https://images.unsplash.com/photo-1592878904946-86d4e8c3b7a8?w=600&auto=format&fit=crop&q=80" },
-    { name: "Swaraj Tractor", url: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80" },
-    { name: "Tractor Trolley", url: "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&auto=format&fit=crop&q=80" },
-    { name: "Rotavator", url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop&q=80" },
-    { name: "Tractor Tyres", url: "https://images.unsplash.com/photo-1578844251758-2f71da64c96f?w=600&auto=format&fit=crop&q=80" },
-    { name: "Battery", url: "https://images.unsplash.com/photo-1597733336794-12d05021d510?w=600&auto=format&fit=crop&q=80" },
-    { name: "Water Pump", url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=600&auto=format&fit=crop&q=80" },
-    { name: "Gir Cow", url: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?w=600&auto=format&fit=crop&q=80" },
-    { name: "A2 Ghee", url: "https://images.unsplash.com/photo-1631451095765-2c91616fc9e6?w=600&auto=format&fit=crop&q=80" },
-    { name: "Raw Honey", url: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&auto=format&fit=crop&q=80" },
+    { name: "Mahindra Tractor", url: "/images/mahindra_tractor.jpg" },
+    { name: "Swaraj Tractor", url: "/images/swaraj_tractor.jpg" },
+    { name: "Tractor Trolley", url: "/images/tractor_trolley.jpg" },
+    { name: "Rotavator", url: "/images/rotavator.jpg" },
+    { name: "Tractor Tyres", url: "/images/tractor_tyres.jpg" },
+    { name: "Battery", url: "/images/tractor_battery.jpg" },
+    { name: "Water Pump", url: "/images/borewell_pump.jpg" },
+    { name: "Power Weeder", url: "/images/power_weeder.jpg" },
+    { name: "Gir Cow", url: "/images/gir_cow.jpg" },
+    { name: "A2 Ghee", url: "/images/a2_ghee.jpg" },
     { name: "Vine Tomatoes", url: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&auto=format&fit=crop&q=80" },
     { name: "Red Onions", url: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=600&auto=format&fit=crop&q=80" }
   ];
