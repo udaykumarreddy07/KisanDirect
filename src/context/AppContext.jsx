@@ -55,12 +55,31 @@ export function AppProvider({ children }) {
     if (!saved) return INITIAL_LISTINGS;
     try {
       const parsed = JSON.parse(saved);
+      // Map latest INITIAL_LISTINGS so fresh real photos and specs update immediately in existing browser sessions
+      const initialMap = new Map(INITIAL_LISTINGS.map((item) => [item.id, item]));
+      const updatedExisting = parsed.map((item) => {
+        if (initialMap.has(item.id)) {
+          return { ...item, ...initialMap.get(item.id) };
+        }
+        return item;
+      });
       const missingListings = INITIAL_LISTINGS.filter((item) => !parsed.some((p) => p.id === item.id));
-      return [...parsed, ...missingListings];
+      const mergedList = [...updatedExisting, ...missingListings];
+      try {
+        localStorage.setItem(STORAGE_KEYS.LISTINGS, JSON.stringify(mergedList));
+      } catch {}
+      return mergedList;
     } catch {
       return INITIAL_LISTINGS;
     }
   });
+
+  // Always keep localStorage synchronized when listings change
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEYS.LISTINGS, JSON.stringify(listings));
+    } catch {}
+  }, [listings]);
 
   // 4. Offers & Negotiation State (Step 4)
   const [offers, setOffers] = useState(() => {
