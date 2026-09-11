@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   TrendingUp,
   MessageSquareShare,
-  SlidersHorizontal,
   Scale,
   Calendar,
   Layers,
@@ -18,10 +17,11 @@ import {
   Phone,
   MessageCircle,
   PlusCircle,
-  CheckCircle2,
   ChevronDown,
   ChevronUp,
-  XCircle
+  Wrench,
+  Clock,
+  FileText
 } from "lucide-react";
 
 export default function DirectMarketplace() {
@@ -40,21 +40,25 @@ export default function DirectMarketplace() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedFarmer, setSelectedFarmer] = useState("All");
-  const [maxDistanceKm, setMaxDistanceKm] = useState(500); // Default radius
+  const [maxDistanceKm, setMaxDistanceKm] = useState(1500); // Default radius
   const [sortBy, setSortBy] = useState("nearest"); // nearest, price_low, price_high, quantity, savings
   const [showComparison, setShowComparison] = useState(false);
 
   const categories = [
     { id: "All", label: "All Items", icon: "🌾" },
+    { id: "Secondhand Tractors", label: "Used Tractors", icon: "🚜" },
+    { id: "Machinery & Implements", label: "Machinery", icon: "⚙️" },
+    { id: "Spare Parts & Components", label: "Spare Parts", icon: "🛞" },
+    { id: "Irrigation & Solar Pumps", label: "Pumps & Solar", icon: "💧" },
+    { id: "Dairy & Livestock", label: "Cattle & Livestock", icon: "🐄" },
     { id: "Vegetables", label: "Vegetables", icon: "🥬" },
     { id: "Fruits", label: "Fruits", icon: "🍎" },
     { id: "Grains", label: "Grains", icon: "🌾" },
     { id: "Pulses", label: "Pulses", icon: "🫘" },
     { id: "Spices", label: "Spices", icon: "🌶️" },
-    { id: "Dairy & Poultry", label: "Dairy & Eggs", icon: "🥛" },
+    { id: "Dairy & Poultry", label: "Dairy & Ghee", icon: "🥛" },
     { id: "Oils & Honey", label: "Oils & Honey", icon: "🍯" },
-    { id: "Seeds & Bio-Inputs", label: "Seeds & Bio", icon: "🌿" },
-    { id: "Farm Tools & Equipment", label: "Farm Tools", icon: "🚜" }
+    { id: "Seeds & Bio-Inputs", label: "Seeds & Bio", icon: "🌿" }
   ];
 
   // Unique list of farmers present in listings
@@ -87,7 +91,9 @@ export default function DirectMarketplace() {
           item.cropName.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.farmerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.category.toLowerCase().includes(searchQuery.toLowerCase());
+          item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (item.condition && item.condition.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.modelYear && item.modelYear.toLowerCase().includes(searchQuery.toLowerCase()));
 
         // Category filter
         const matchesCategory =
@@ -135,17 +141,17 @@ export default function DirectMarketplace() {
           boxShadow: "0 10px 25px -5px rgba(20, 83, 45, 0.25)"
         }}
       >
-        <div style={{ position: "relative", zIndex: 2, maxWidth: "760px" }}>
+        <div style={{ position: "relative", zIndex: 2, maxWidth: "780px" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "rgba(255,255,255,0.15)", padding: "4px 12px", borderRadius: "9999px", fontSize: "0.75rem", fontWeight: 700, marginBottom: "10px", backdropFilter: "blur(4px)" }}>
             <Sparkles size={13} color="#fde047" /> DIRECT FARMER-TO-BUYER MARKETPLACE
           </div>
 
           <h1 style={{ fontSize: "1.75rem", fontFamily: "var(--font-heading)", fontWeight: 800, margin: "0 0 8px 0", lineHeight: "1.2" }}>
-            Direct Selling for Farmers. <span style={{ color: "#86efac" }}>Zero Middlemen. Fair Prices.</span>
+            Sell <span style={{ color: "#86efac" }}>Tractors, Spares, Machinery</span> & Farm Produce Directly.
           </h1>
 
           <p style={{ fontSize: "0.88rem", opacity: 0.92, margin: "0 0 16px 0", lineHeight: "1.5" }}>
-            Farmers list and sell <strong>any farm product</strong> — vegetables, fruits, grains, pulses, spices, Vedic A2 ghee, raw forest honey, cold-pressed oils, seeds, and equipment directly to buyers without intermediaries taking commission cuts.
+            Zero mediators, zero middleman cuts. Farmers can sell <strong>secondhand tractors, rotary tillers, spare parts, irrigation pumps, cattle, honey, and fresh crops</strong> directly to buyers with 100% payout security and direct phone/WhatsApp connect.
           </p>
 
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", alignItems: "center" }}>
@@ -166,7 +172,7 @@ export default function DirectMarketplace() {
                 boxShadow: "0 4px 12px rgba(250, 204, 21, 0.4)"
               }}
             >
-              <PlusCircle size={17} /> + Sell Any Farm Product
+              <PlusCircle size={17} /> + Sell Any Farm Item / Tractor
             </button>
 
             <button
@@ -210,7 +216,7 @@ export default function DirectMarketplace() {
           className="desktop-stat-badge"
         >
           <div style={{ fontSize: "0.7rem", color: "#64748b", fontWeight: 700, textTransform: "uppercase" }}>
-            Total Middleman Cut Saved
+            Total Dealer / Broker Cut Saved
           </div>
           <div style={{ fontSize: "1.45rem", fontWeight: 900, color: "#15803d" }}>
             {formatINR(totalMiddlemanCutSaved)}
@@ -221,7 +227,7 @@ export default function DirectMarketplace() {
         </div>
       </div>
 
-      {/* 2. Expandable Zero-Middleman vs Traditional Mandi Comparison Table */}
+      {/* 2. Expandable Zero-Middleman vs Traditional Mandi / Tractor Broker Comparison Table */}
       {showComparison && (
         <div
           style={{
@@ -235,7 +241,7 @@ export default function DirectMarketplace() {
         >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
             <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#14532d", margin: 0, display: "flex", alignItems: "center", gap: "6px" }}>
-              ⚖️ The Direct Advantage: Traditional Middleman vs KisanDirect
+              ⚖️ The Direct Advantage: Traditional Brokers vs KisanDirect
             </h3>
             <button
               onClick={() => setShowComparison(false)}
@@ -246,29 +252,29 @@ export default function DirectMarketplace() {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-            {/* Traditional Middleman */}
+            {/* Traditional Middleman / Dealer */}
             <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: "12px", padding: "12px 14px" }}>
               <h4 style={{ color: "#991b1b", fontSize: "0.85rem", fontWeight: 800, margin: "0 0 8px 0" }}>
-                ❌ Traditional APMC Mandi / Dalal System
+                ❌ Traditional Used Tractor Dealers & Mandi Dalals
               </h4>
               <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.78rem", color: "#7f1d1d", lineHeight: "1.6" }}>
-                <li><strong>25% - 40% Broker Deduction:</strong> Dalals and aggregators take large commissions.</li>
-                <li><strong>Delayed Cash Payments:</strong> Farmers wait 30 - 60 days for trade settlement.</li>
-                <li><strong>Forced Price Slashing:</strong> Unfair quality grading down-scales farmer returns.</li>
-                <li><strong>Zero Buyer Interaction:</strong> Farmer never speaks to or knows the end buyer.</li>
+                <li><strong>₹20,000 - ₹50,000 Broker Fee:</strong> Dealers add huge margins on secondhand machinery.</li>
+                <li><strong>Delayed Payouts:</strong> Intermediaries hold payments until final buyers pay.</li>
+                <li><strong>Heavy Commission on Spare Parts:</strong> Unfair markups on used implements & spares.</li>
+                <li><strong>Zero Transparency:</strong> Seller farmer and buyer farmer never talk directly.</li>
               </ul>
             </div>
 
             {/* KisanDirect Direct Model */}
             <div style={{ background: "#f0fdf4", border: "1.5px solid #86efac", borderRadius: "12px", padding: "12px 14px" }}>
               <h4 style={{ color: "#14532d", fontSize: "0.85rem", fontWeight: 800, margin: "0 0 8px 0" }}>
-                ✅ KisanDirect Direct Access Platform
+                ✅ KisanDirect Peer-to-Peer Direct Marketplace
               </h4>
               <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "0.78rem", color: "#166534", lineHeight: "1.6" }}>
-                <li><strong>0% Platform Commission:</strong> Farmer dictates price & takes home 100% revenue.</li>
-                <li><strong>Direct Instant Payment:</strong> Funds secured in escrow and released directly to UPI.</li>
-                <li><strong>Direct Call & WhatsApp:</strong> One-click contact between farmers and buyers.</li>
-                <li><strong>Sell ANY Farm Product:</strong> Crops, Ghee, Oils, Honey, Seeds, and Farm Tools.</li>
+                <li><strong>0% Platform Commission:</strong> Farmers sell directly at their own price with zero broker cut.</li>
+                <li><strong>Direct Phone & WhatsApp:</strong> Schedule farm visits, inspections, and test drives.</li>
+                <li><strong>Verified RC & Papers:</strong> Direct verification of single-owner tractors & equipment.</li>
+                <li><strong>Full Agricultural Ecosystem:</strong> Tractors, Rotavators, Tyres, Batteries, Cattle, & Crops!</li>
               </ul>
             </div>
           </div>
@@ -289,7 +295,7 @@ export default function DirectMarketplace() {
             <TrendingUp size={18} />
           </div>
           <div>
-            <div style={{ fontSize: "0.7rem", color: "#64748b", fontWeight: 700 }}>MIDDLEMAN FEES SAVED</div>
+            <div style={{ fontSize: "0.7rem", color: "#64748b", fontWeight: 700 }}>BROKER COMMISSIONS SAVED</div>
             <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#15803d" }}>
               {formatINR(totalMiddlemanCutSaved)}
             </div>
@@ -301,9 +307,9 @@ export default function DirectMarketplace() {
             <ShieldCheck size={18} />
           </div>
           <div>
-            <div style={{ fontSize: "0.7rem", color: "#64748b", fontWeight: 700 }}>BROKER COMMISSION</div>
+            <div style={{ fontSize: "0.7rem", color: "#64748b", fontWeight: 700 }}>BROKER FEE</div>
             <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0369a1" }}>
-              0% (Zero Middlemen)
+              0% (Direct Farmer Payout)
             </div>
           </div>
         </div>
@@ -315,7 +321,7 @@ export default function DirectMarketplace() {
           <div>
             <div style={{ fontSize: "0.7rem", color: "#64748b", fontWeight: 700 }}>DIRECT TRADE MODES</div>
             <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#b45309" }}>
-              Call • WhatsApp • Buy
+              Test Drive • Call • WhatsApp • Buy
             </div>
           </div>
         </div>
@@ -328,7 +334,7 @@ export default function DirectMarketplace() {
           <Search size={18} color="#15803d" />
           <input
             type="text"
-            placeholder="Search produce (e.g., A2 Ghee, Forest Honey, Wheat, Onions, Mustard Oil)..."
+            placeholder="Search items (e.g. Mahindra Tractor, Rotavator, Tyres, Battery, Borewell Pump, Wheat, Ghee)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -410,8 +416,8 @@ export default function DirectMarketplace() {
             <input
               type="range"
               min="10"
-              max="1500"
-              step="25"
+              max="2000"
+              step="50"
               value={maxDistanceKm}
               onChange={(e) => setMaxDistanceKm(Number(e.target.value))}
               style={{ width: "110px", accentColor: "#16a34a" }}
@@ -432,7 +438,7 @@ export default function DirectMarketplace() {
                 style={{ padding: "4px 8px", fontSize: "0.72rem", width: "auto" }}
                 title="Filter by Farmer"
               >
-                <option value="All">All Growers ({farmerOptions.length})</option>
+                <option value="All">All Growers & Sellers ({farmerOptions.length})</option>
                 {farmerOptions.map((f) => {
                   const count = listings.filter((l) => l.farmerId === f.id).length;
                   return (
@@ -453,7 +459,7 @@ export default function DirectMarketplace() {
                 style={{ padding: "4px 8px", fontSize: "0.72rem", width: "auto" }}
               >
                 <option value="nearest">Nearest Distance</option>
-                <option value="savings">Highest Direct Farmer Profit</option>
+                <option value="savings">Highest Broker Savings</option>
                 <option value="price_low">Price: Low to High</option>
                 <option value="price_high">Price: High to Low</option>
                 <option value="quantity">Largest Stock Quantity</option>
@@ -466,7 +472,7 @@ export default function DirectMarketplace() {
       {/* 5. Produce Listings Grid Header */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px" }}>
         <h2 style={{ fontSize: "1.1rem", fontFamily: "var(--font-heading)", fontWeight: 800, color: "#0f172a", margin: 0 }}>
-          Available Farm Products ({filteredListings.length})
+          Available Farm & Machinery Items ({filteredListings.length})
         </h2>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <button
@@ -474,7 +480,7 @@ export default function DirectMarketplace() {
             className="btn-primary"
             style={{ padding: "7px 14px", fontSize: "0.78rem", fontWeight: 700 }}
           >
-            + Sell Any Farm Product
+            + Sell Any Item
           </button>
         </div>
       </div>
@@ -492,14 +498,14 @@ export default function DirectMarketplace() {
         >
           <p style={{ fontSize: "2.5rem", margin: "0 0 8px 0" }}>🚜</p>
           <h3 style={{ fontSize: "1.1rem", fontWeight: 800, margin: "0 0 6px 0" }}>
-            No products found matching your filters
+            No items found matching your search
           </h3>
           <p style={{ fontSize: "0.82rem", color: "#64748b", margin: "0 0 16px 0" }}>
-            Expand your distance radius slider or reset search keywords.
+            Expand your distance radius or search for other items like Tractors, Tyres, or Grains.
           </p>
           <button
             onClick={() => {
-              setMaxDistanceKm(1500);
+              setMaxDistanceKm(2000);
               setSearchQuery("");
               setSelectedCategory("All");
               setSelectedFarmer("All");
@@ -511,12 +517,18 @@ export default function DirectMarketplace() {
           </button>
         </div>
       ) : (
-        /* 7. Product Cards Grid */
+        /* 7. Product & Machinery Cards Grid */
         <div className="crops-grid">
           {filteredListings.map((crop) => {
             const isOwner = crop.farmerId === currentUser.id;
             const extraFarmerGain = (crop.expectedPrice || 0) - (crop.mandiReferencePrice || 0);
-            const percentageGain = crop.mandiReferencePrice > 0 ? Math.round((extraFarmerGain / crop.mandiReferencePrice) * 100) : 32;
+            const isMachinery =
+              crop.category === "Secondhand Tractors" ||
+              crop.category === "Machinery & Implements" ||
+              crop.category === "Spare Parts & Components" ||
+              crop.category === "Irrigation & Solar Pumps" ||
+              crop.itemType === "machinery" ||
+              crop.itemType === "sparepart";
 
             return (
               <div
@@ -524,7 +536,7 @@ export default function DirectMarketplace() {
                 className="crop-card"
                 onClick={() => setSelectedCropForDetails(crop)}
                 style={{ cursor: "pointer" }}
-                title="Click to view complete produce information"
+                title="Click to view full item specifications"
               >
                 {/* Photo & Badges */}
                 <div className="crop-card-image-wrapper">
@@ -542,6 +554,24 @@ export default function DirectMarketplace() {
                     <MapPin size={11} />
                     {crop.distanceKm} km away
                   </span>
+                  {crop.modelYear && (
+                    <span
+                      style={{
+                        position: "absolute",
+                        top: "10px",
+                        left: "10px",
+                        background: "rgba(15, 23, 42, 0.8)",
+                        color: "#fff",
+                        fontSize: "0.68rem",
+                        padding: "3px 8px",
+                        borderRadius: "6px",
+                        fontWeight: 700,
+                        backdropFilter: "blur(4px)"
+                      }}
+                    >
+                      {crop.modelYear}
+                    </span>
+                  )}
                 </div>
 
                 <div className="crop-card-body">
@@ -566,48 +596,74 @@ export default function DirectMarketplace() {
                     </div>
                   </div>
 
-                  <p style={{ fontSize: "0.78rem", color: "#475569", lineHeight: "1.4", margin: "6px 0 10px 0" }}>
+                  {/* Secondhand Condition / Hours Highlight */}
+                  {(crop.condition || crop.hoursRun) && (
+                    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", margin: "4px 0 6px 0" }}>
+                      {crop.condition && (
+                        <span style={{ background: "#e0f2fe", color: "#0369a1", fontSize: "0.68rem", padding: "2px 6px", borderRadius: "4px", fontWeight: 700 }}>
+                          🛠️ {crop.condition}
+                        </span>
+                      )}
+                      {crop.hoursRun && (
+                        <span style={{ background: "#fef3c7", color: "#92400e", fontSize: "0.68rem", padding: "2px 6px", borderRadius: "4px", fontWeight: 600 }}>
+                          ⏱️ {crop.hoursRun}
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  <p style={{ fontSize: "0.78rem", color: "#475569", lineHeight: "1.4", margin: "4px 0 10px 0" }}>
                     {crop.description}
                   </p>
 
-                  {/* Mandi vs Direct Price Comparison Box */}
+                  {/* Price Comparison Box */}
                   <div className="price-comparison-box">
                     <div className="price-col">
                       <span className="price-col-label">Direct Farmer Price</span>
                       <span className="price-col-val farmer-price">
-                        ₹{crop.expectedPrice}
-                        <span style={{ fontSize: "0.72rem", fontWeight: 500 }}>/{crop.unit || "kg"}</span>
+                        ₹{Number(crop.expectedPrice).toLocaleString()}
+                        <span style={{ fontSize: "0.72rem", fontWeight: 500 }}>
+                          {crop.unit === "Unit" || crop.unit === "Pair" ? `/${crop.unit}` : `/${crop.unit || "kg"}`}
+                        </span>
                       </span>
                     </div>
 
                     <div className="price-col">
-                      <span className="price-col-label">Middleman Mandi Rate</span>
+                      <span className="price-col-label">{isMachinery ? "Dealer Benchmark" : "Mandi Rate"}</span>
                       <span className="price-col-val mandi-ref">
-                        ₹{crop.mandiReferencePrice || Math.round(crop.expectedPrice * 0.74)}
-                        <span style={{ fontSize: "0.72rem", fontWeight: 500 }}>/{crop.unit || "kg"}</span>
+                        ₹{Number(crop.mandiReferencePrice || Math.round(crop.expectedPrice * 0.8)).toLocaleString()}
+                        <span style={{ fontSize: "0.72rem", fontWeight: 500 }}>
+                          {crop.unit === "Unit" || crop.unit === "Pair" ? `/${crop.unit}` : `/${crop.unit || "kg"}`}
+                        </span>
                       </span>
                     </div>
 
                     <div className="middleman-savings-tag">
                       <TrendingUp size={13} />
-                      Farmer earns +₹{extraFarmerGain > 0 ? extraFarmerGain : Math.round(crop.expectedPrice * 0.26)}/{crop.unit || "kg"} extra ({percentageGain}% profit)
+                      {isMachinery ? (
+                        <span>Dealer commission cut of <strong>₹{Math.abs(extraFarmerGain).toLocaleString()}</strong> avoided!</span>
+                      ) : (
+                        <span>Farmer keeps +₹{Math.abs(extraFarmerGain)}/{crop.unit || "kg"} extra (0% broker fee)</span>
+                      )}
                     </div>
                   </div>
 
-                  {/* Quantity & Harvest Metadata */}
+                  {/* Stock & Paperwork Metadata */}
                   <div className="crop-meta-chips">
                     <span className="crop-meta-chip">
                       <Scale size={11} style={{ display: "inline", marginRight: "3px" }} />
-                      Stock: {(crop.quantity || 100).toLocaleString()} {crop.unit || "kg"}
+                      Stock: {(crop.quantity || 1).toLocaleString()} {crop.unit || "Unit"}
                     </span>
-                    <span className="crop-meta-chip">
-                      <Layers size={11} style={{ display: "inline", marginRight: "3px" }} />
-                      Min: {crop.minOrderQuantity || 10} {crop.unit || "kg"}
-                    </span>
-                    <span className="crop-meta-chip">
-                      <Calendar size={11} style={{ display: "inline", marginRight: "3px" }} />
-                      {crop.harvestDate}
-                    </span>
+                    {crop.paperwork ? (
+                      <span className="crop-meta-chip" style={{ color: "#0369a1", background: "#f0f9ff" }}>
+                        📄 {crop.paperwork.split(",")[0]}
+                      </span>
+                    ) : (
+                      <span className="crop-meta-chip">
+                        <Calendar size={11} style={{ display: "inline", marginRight: "3px" }} />
+                        {crop.harvestDate}
+                      </span>
+                    )}
                   </div>
 
                   {/* Direct Contact Snippet & Grower Name */}
@@ -622,7 +678,7 @@ export default function DirectMarketplace() {
                       borderTop: "1px solid #f1f5f9"
                     }}
                   >
-                    <span>Grower: <strong style={{ color: "#0f172a" }}>{crop.farmerName}</strong></span>
+                    <span>Seller: <strong style={{ color: "#0f172a" }}>{crop.farmerName}</strong></span>
                     {isOwner ? (
                       <span style={{ color: "#15803d", fontWeight: 700 }}>Your Listing</span>
                     ) : (
@@ -673,7 +729,7 @@ export default function DirectMarketplace() {
                       <>
                         <button
                           type="button"
-                          onClick={() => directInstantBuy(crop, crop.minOrderQuantity || 10)}
+                          onClick={() => directInstantBuy(crop, crop.minOrderQuantity || 1)}
                           className="btn-primary"
                           style={{
                             fontSize: "0.78rem",
@@ -683,7 +739,7 @@ export default function DirectMarketplace() {
                             boxShadow: "0 2px 8px rgba(22, 163, 74, 0.25)"
                           }}
                         >
-                          ⚡ Direct Buy
+                          {isMachinery ? "⚡ Direct Book" : "⚡ Direct Buy"}
                         </button>
                         <button
                           type="button"
@@ -691,7 +747,7 @@ export default function DirectMarketplace() {
                           className="btn-outline"
                           style={{ fontSize: "0.78rem", padding: "8px 10px", flex: 1 }}
                         >
-                          <MessageSquareShare size={13} /> Offer
+                          <MessageSquareShare size={13} /> {isMachinery ? "Offer / Inspect" : "Offer"}
                         </button>
                       </>
                     )}

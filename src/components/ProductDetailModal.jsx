@@ -274,13 +274,56 @@ export default function ProductDetailModal() {
               </div>
             </div>
 
-            {/* Produce Description */}
+            {/* Secondhand Machinery, Tractor & Spares Technical Specifications */}
+            {(crop.modelYear || crop.hoursRun || crop.paperwork || crop.condition) && (
+              <div
+                style={{
+                  background: "#f0f9ff",
+                  border: "1.5px solid #bae6fd",
+                  borderRadius: "14px",
+                  padding: "14px 16px",
+                  marginBottom: "16px"
+                }}
+              >
+                <div style={{ fontSize: "0.82rem", fontWeight: 800, color: "#0369a1", marginBottom: "10px", display: "flex", alignItems: "center", gap: "6px" }}>
+                  🚜 Secondhand Equipment & Machine Verification:
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "10px", fontSize: "0.78rem" }}>
+                  {crop.condition && (
+                    <div>
+                      <span style={{ color: "#64748b", display: "block" }}>Condition:</span>
+                      <strong style={{ color: "#0f172a" }}>{crop.condition}</strong>
+                    </div>
+                  )}
+                  {crop.modelYear && (
+                    <div>
+                      <span style={{ color: "#64748b", display: "block" }}>Model Year / Age:</span>
+                      <strong style={{ color: "#0f172a" }}>{crop.modelYear}</strong>
+                    </div>
+                  )}
+                  {crop.hoursRun && (
+                    <div>
+                      <span style={{ color: "#64748b", display: "block" }}>Usage / Engine Hours:</span>
+                      <strong style={{ color: "#0f172a" }}>{crop.hoursRun}</strong>
+                    </div>
+                  )}
+                  {crop.paperwork && (
+                    <div style={{ gridColumn: "1 / -1" }}>
+                      <span style={{ color: "#64748b", display: "block" }}>Documentation & RC:</span>
+                      <strong style={{ color: "#15803d" }}>📄 {crop.paperwork}</strong>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Produce / Equipment Description */}
             <div style={{ marginBottom: "18px" }}>
               <h4 style={{ fontSize: "0.85rem", fontWeight: 700, color: "#334155", marginBottom: "4px" }}>
-                Produce Description & Quality Notes:
+                {crop.itemType === "machinery" || crop.itemType === "sparepart" ? "Equipment Condition & Included Attachments:" : "Produce Description & Quality Notes:"}
               </h4>
               <p style={{ fontSize: "0.88rem", color: "#475569", lineHeight: "1.5", background: "#ffffff", border: "1px solid var(--border)", borderRadius: "12px", padding: "12px" }}>
-                {crop.description || "Fresh harvest naturally cultivated and sorted directly at farm origin."}
+                {crop.description || "Inspected and directly available from the farmer's property."}
               </p>
             </div>
 
